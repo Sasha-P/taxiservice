@@ -1,0 +1,79 @@
+/*
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+*/
+
+.form-taxiorder {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-taxiorder .form-taxiorder-heading,
+.form-taxiorder .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-taxiorder .checkbox {
+  font-weight: normal;
+}
+
+.form-taxiorder .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-taxiorder .form-control:focus {
+  z-index: 2;
+}
+
+.form-taxiorder input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-taxiorder input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-taxiorder input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-taxiorder input[type="phonenumber"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.in-progress {
+  background: transparent url('../img/ajax-loader.gif') no-repeat;
+}
+
+.alert-black {
+  color: #fff;
+  background-color: #333;
+  border-color: #fff;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #222;
+}
+
+.statistic {
+    margin-top: 76px;
+    margin-bottom: 90px;
+}

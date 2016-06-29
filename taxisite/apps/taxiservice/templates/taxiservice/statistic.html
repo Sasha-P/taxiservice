@@ -1,0 +1,40 @@
+{% extends 'taxiservice/base.html' %}{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/taxiorder.css' %}">
+{% endblock %}
+
+{% block statisticactive %}
+class="active"
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="statistic">
+            {% if orders %}
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Order date</th>
+                        <th>Registration plate</th>
+                        <th>Client phone number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ order.order_date }}</td>
+                        <td>{{ order.registration_plate }}</td>
+                        <td>{{ order.client.phone_number }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No orders</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
