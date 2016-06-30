@@ -25,7 +25,7 @@ class="active"
                     {% for order in orders %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ order.order_date }}</td>
+                        <td>{{ order.order_date|date:'Y-m-d H:i:s' }}</td>
                         <td>{{ order.registration_plate }}</td>
                         <td>{{ order.client.phone_number }}</td>
                     </tr>

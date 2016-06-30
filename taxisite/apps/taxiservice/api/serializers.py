@@ -1,3 +1,7 @@
+import re
+
+from django.utils.translation import ugettext as _
+
 from rest_framework import serializers
 
 from apps.taxiservice.models import Client
@@ -10,6 +14,11 @@ class ClientSerializer(serializers.Serializer):
     def validate(self, attrs):
         name = attrs['name']
         phone_number = attrs['phone_number']
+
+        PHONE_REGEX = re.compile(r"[+(]?[+(]?[0-9- ]+[)]?[0-9- ]+")
+
+        if not PHONE_REGEX.match(phone_number):
+            raise ValueError(_('Invalid value'))
 
         clients = Client.objects.filter(phone_number=phone_number)
 

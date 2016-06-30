@@ -53,7 +53,7 @@ body {
   border-top-right-radius: 0;
 }
 
-.form-taxiorder input[type="phonenumber"] {
+.form-taxiorder input[type="tel"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -67,6 +67,18 @@ body {
   color: #fff;
   background-color: #333;
   border-color: #fff;
+}
+
+.alert-green {
+  color: #fff;
+  background-color: #333;
+  border-color: #3c763d;
+}
+
+.alert-red {
+  color: #fff;
+  background-color: #333;
+  border-color: #a94442;
 }
 
 .table-hover > tbody > tr:hover {

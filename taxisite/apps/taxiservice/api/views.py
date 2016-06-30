@@ -23,31 +23,38 @@ class TaxiOrderView(CreateAPIView):
         client = serializer.validated_data['client']
         client.save()
 
-        delay = randrange(30)  # delay in seconds for real server simulation
-        time.sleep(delay)
-        is_car = False
-        registration_plate = '-'
-        if delay % 2 == 0:
-            is_car = True
-            registration_plate = xeger(r'[A-Z]{2} \d{4} [A-Z]{2}')
+        if client:
+            delay = randrange(30)  # delay in seconds for real server simulation
+            time.sleep(delay)
+            is_car = False
+            registration_plate = '-'
+            if delay % 2 == 0:
+                is_car = True
+                registration_plate = xeger(r'[A-Z]{2} \d{4} [A-Z]{2}')
 
-        if is_car:
+            if is_car:
+                content = {
+                    'is_car': True,
+                    'registration_plate': registration_plate,
+                    'will_be_in': delay
+                }
+            else:
+                content = {
+                    'is_car': False,
+                    'no_car_msg': 'Not found any taxi in your area'
+                }
 
-            content = {
-                'is_car': True,
-                'registration_plate': registration_plate,
-                'will_be_in': delay
-            }
+            Order.objects.create(
+                order_date=timezone.now(),
+                registration_plate=registration_plate,
+                client=client
+            )
         else:
             content = {
-                'is_car': False,
-                'no_car_msg': 'Not found any taxi in your area'
+                'is_error': True,
+                # 'is_car': False,
+                # 'no_car_msg': 'Not found any taxi in your area'
+                'error': 'Oops'
             }
-
-        Order.objects.create(
-            order_date=timezone.now(),
-            registration_plate=registration_plate,
-            client=client
-        )
 
         return Response(content)

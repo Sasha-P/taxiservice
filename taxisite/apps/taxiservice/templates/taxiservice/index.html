@@ -2,6 +2,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/taxiorder.css' %}">
+    <link rel="stylesheet" href="{% static 'waitMe/waitMe.min.css' %}">
 {% endblock %}
 
 {% block homeactive %}
@@ -15,12 +16,15 @@ class="active"
             <label for="name" class="sr-only">Name</label>
             <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
             <label for="phone_number" class="sr-only">Phone Number</label>
-            <input type="phonenumber" id="phone_number" name="phone_number" class="form-control" placeholder="Phone Number" required>
+            <input type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="Phone Number" required>
             <button class="btn btn-lg btn-default" type="submit">Order taxi</button>
         </form>
     </div>
 {% endblock %}
 
 {% block js %}
+    <script src="{% static 'waitMe/waitMe.min.js' %}"></script>
+    <script src="{% static 'jquery-validation/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'jquery-validation/additional-methods.min.js' %}"></script>
     <script src="{% static 'js/taxiorder.js' %}"></script>
 {% endblock %}

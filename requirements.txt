@@ -1,3 +1,7 @@
+Babel==2.3.4
 Django==1.9.7
+django-phonenumber-field==1.1.0
 djangorestframework==3.3.3
+phonenumberslite==7.4.3
+pytz==2016.4
 rstr==2.2.4

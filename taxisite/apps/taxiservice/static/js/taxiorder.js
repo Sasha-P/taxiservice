@@ -1,4 +1,22 @@
 $(document).ready(function(){
+    $('form').validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 3
+            },
+            phone_number: {
+                required: true,
+                minlength: 3,
+                pattern: '[+(]?[+(]?[0-9- ]+[)]?[0-9- ]+'
+            }
+        },
+        messages: {
+            phone_number: {
+                pattern: "Phone number is incorrect."
+            }
+        }
+    });
     $('form').on('submit', function(event) {
         event.preventDefault();
         var form = $('form');
@@ -13,11 +31,13 @@ $(document).ready(function(){
             success: function(response){
                     form.remove();
 
-                    var msg = $('<div class="alert alert-black" role="alert"></div>');
+
                     if (response.is_car) {
-                        msg.append("Taxi registration plate: " + response.registration_plate + ". ");
-                        msg.append("Will be in: " + response.will_be_in + " minutes. ");
+                        var msg = $('<div class="alert alert-green" role="alert"></div>');
+                        msg.append("<p>Taxi registration plate: " + response.registration_plate + ".</p>");
+                        msg.append("<p>Will be in: " + response.will_be_in + " minutes.</p>");
                     } else {
+                        var msg = $('<div class="alert alert-red" role="alert"></div>');
                         msg.append(response.no_car_msg);
                     }
 
@@ -26,23 +46,22 @@ $(document).ready(function(){
             error: function(request, errorType, errorMessage){
                     form.remove();
 
-                    var msg = $('<div class="alert alert-black" role="alert"></div>');
+                    var msg = $('<div class="alert alert-red" role="alert"></div>');
                     msg.append('Error: ' + errorType + '  with message: ' + errorMessage);
 
                     innercover.html(msg).fadeIn();
                 },
             beforeSend: function(xhr, settings){
-                    //set "in progress"
-//                   innercover.addClass('in-progress');
-                    console.log(form.serialize());
-                    console.log(form.serializeArray());
-
-//                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    innercover.waitMe({
+                        effect : 'bounce',
+                        text : '',
+                        bg : 'rgba(51,51,51, 0.7)',
+                        color : '#fff'
+                    });
                 },
-//            complete: function(){
-//                    //remove "in progress"
-////                    innercover.removeClass('in-progress');
-//                }
+            complete: function(){
+                    innercover.waitMe('hide');
+                }
         });
     });
 });
