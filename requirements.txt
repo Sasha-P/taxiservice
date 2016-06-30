@@ -1,0 +1,5 @@
+Babel==2.3.4
+Django==1.9.7
+djangorestframework==3.3.3
+pytz==2016.4
+rstr==2.2.4
