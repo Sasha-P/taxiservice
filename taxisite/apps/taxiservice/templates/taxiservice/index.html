@@ -10,12 +10,12 @@ class="active"
 
 {% block content %}
     <div class="inner cover">
-        <form class="form-taxiorder">
+        <form class="form-taxiorder">{% csrf_token %}
             <h2 class="form-taxiorder-heading">Order Taxi</h2>
-            <label for="inputName" class="sr-only">Name</label>
-            <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
-            <label for="inputPhoneNumber" class="sr-only">Phone Number</label>
-            <input type="phonenumber" id="inputPhoneNumber" class="form-control" placeholder="Phone Number" required>
+            <label for="name" class="sr-only">Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
+            <label for="phone_number" class="sr-only">Phone Number</label>
+            <input type="phonenumber" id="phone_number" name="phone_number" class="form-control" placeholder="Phone Number" required>
             <button class="btn btn-lg btn-default" type="submit">Order taxi</button>
         </form>
     </div>
